@@ -1,7 +1,5 @@
-// swift-tools-version:5.5
-
 //
-//  Package.swift
+//  Exports.swift
 //
 //  Copyright © 2022 Aleksei Zaikin.
 //
@@ -24,21 +22,5 @@
 //  THE SOFTWARE.
 //
 
-
-import PackageDescription
-
-let package = Package(
-   name: "InstrumentsUI",
-   platforms: [
-      .iOS(.v13),
-      .tvOS(.v13),
-      .macCatalyst(.v13)
-   ],
-   products: [
-      .library(name: "InstrumentsUI", targets: ["InstrumentsUI"]),
-   ],
-   targets: [
-      .target(name: "InstrumentsUI", dependencies: ["InstrumentsUIObjC"]),
-      .target(name: "InstrumentsUIObjC")
-   ]
-)
+@_exported
+import InstrumentsUIObjC

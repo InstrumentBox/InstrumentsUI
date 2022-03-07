@@ -1,7 +1,5 @@
-// swift-tools-version:5.5
-
 //
-//  Package.swift
+//  IUIBCollectionViewCompositionalLayout.h
 //
 //  Copyright © 2022 Aleksei Zaikin.
 //
@@ -24,21 +22,17 @@
 //  THE SOFTWARE.
 //
 
+#import <UIKit/UIKit.h>
 
-import PackageDescription
+NS_ASSUME_NONNULL_BEGIN
 
-let package = Package(
-   name: "InstrumentsUI",
-   platforms: [
-      .iOS(.v13),
-      .tvOS(.v13),
-      .macCatalyst(.v13)
-   ],
-   products: [
-      .library(name: "InstrumentsUI", targets: ["InstrumentsUI"]),
-   ],
-   targets: [
-      .target(name: "InstrumentsUI", dependencies: ["InstrumentsUIObjC"]),
-      .target(name: "InstrumentsUIObjC")
-   ]
-)
+NS_SWIFT_NAME(IBCollectionViewCompositionalLayout)
+@interface IUIBCollectionViewCompositionalLayout : NSProxy
+
+- (instancetype)initWithCoder:(NSCoder *)aDecoder NS_SWIFT_NAME(init(coder:));
+
+- (UICollectionViewCompositionalLayout *)makeLayout NS_SWIFT_NAME(makeLayout());
+
+@end
+
+NS_ASSUME_NONNULL_END

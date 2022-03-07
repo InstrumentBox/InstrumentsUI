@@ -1,7 +1,5 @@
-// swift-tools-version:5.5
-
 //
-//  Package.swift
+//  IUIBCollectionViewCompositionalLayout.m
 //
 //  Copyright © 2022 Aleksei Zaikin.
 //
@@ -24,21 +22,45 @@
 //  THE SOFTWARE.
 //
 
+#import "IUIBCollectionViewCompositionalLayout.h"
 
-import PackageDescription
+#if TARGET_OS_IPHONE || TARGET_IPHONE_SIMULATOR
 
-let package = Package(
-   name: "InstrumentsUI",
-   platforms: [
-      .iOS(.v13),
-      .tvOS(.v13),
-      .macCatalyst(.v13)
-   ],
-   products: [
-      .library(name: "InstrumentsUI", targets: ["InstrumentsUI"]),
-   ],
-   targets: [
-      .target(name: "InstrumentsUI", dependencies: ["InstrumentsUIObjC"]),
-      .target(name: "InstrumentsUIObjC")
-   ]
-)
+@interface IUIBCollectionViewCompositionalLayout ()
+
+@property (nonatomic, strong) UICollectionViewCompositionalLayout *layout;
+
+@end
+
+@implementation IUIBCollectionViewCompositionalLayout
+
+#pragma mark - Init
+
+- (instancetype)initWithCoder:(NSCoder *)aDecoder {
+   self.layout = [self makeLayout];
+   return self;
+}
+
+#pragma mark - Compositional Layout Factory
+
+- (UICollectionViewCompositionalLayout *)makeLayout {
+   NSString *func = NSStringFromSelector(_cmd);
+   NSString *class = NSStringFromClass([self class]);
+   [NSException raise:NSInternalInconsistencyException
+               format:@"%@ MUST be overridden in %@", func, class];
+   return nil;
+}
+
+#pragma mark - NSProxy
+
+- (NSMethodSignature *)methodSignatureForSelector:(SEL)sel {
+   return [self.layout methodSignatureForSelector:sel];
+}
+
+- (void)forwardInvocation:(NSInvocation *)invocation {
+   [invocation invokeWithTarget:self.layout];
+}
+
+@end
+
+#endif
