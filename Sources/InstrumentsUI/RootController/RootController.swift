@@ -37,6 +37,8 @@ open class RootController: UIViewController {
       }
    }
 
+   private let transitionView = RootTransitionView()
+
    private var _contentViewController: UIViewController?
 
    // MARK: - Init
@@ -56,11 +58,18 @@ open class RootController: UIViewController {
    open override func viewDidLoad() {
       super.viewDidLoad()
 
-      if let _contentViewController = _contentViewController, _contentViewController.parent == nil {
-         addChild(_contentViewController)
-         view.addSubview(_contentViewController.view)
-         _contentViewController.view.frame = view.bounds
-         _contentViewController.didMove(toParent: self)
+      view.backgroundColor = nil
+      view.addSubview(transitionView)
+      NSLayoutConstraint.activate(transitionView.edgesAnchor.constraints(equalTo: view.edgesAnchor))
+
+      if let current = _contentViewController, current.parent == nil {
+         addChild(current)
+         view.addSubview(current.view)
+         current.view.translatesAutoresizingMaskIntoConstraints = false
+         NSLayoutConstraint.activate(current.view.edgesAnchor.constraints(
+            equalTo: transitionView.edgesAnchor
+         ))
+         current.didMove(toParent: self)
       }
    }
 
@@ -95,7 +104,10 @@ open class RootController: UIViewController {
       if let current = current {
          addChild(current)
          view.addSubview(current.view)
-         current.view.frame = view.bounds
+         current.view.translatesAutoresizingMaskIntoConstraints = false
+         NSLayoutConstraint.activate(current.view.edgesAnchor.constraints(
+            equalTo: transitionView.edgesAnchor
+         ))
       }
 
       let properties = delegate?.rootController?(
