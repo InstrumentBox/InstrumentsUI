@@ -64,7 +64,7 @@ open class RootController: UIViewController {
 
       if let current = _contentViewController, current.parent == nil {
          addChild(current)
-         view.addSubview(current.view)
+         transitionView.addSubview(current.view)
          current.view.translatesAutoresizingMaskIntoConstraints = false
          NSLayoutConstraint.activate(current.view.edgesAnchor.constraints(
             equalTo: transitionView.edgesAnchor
@@ -103,7 +103,7 @@ open class RootController: UIViewController {
       previous?.willMove(toParent: nil)
       if let current = current {
          addChild(current)
-         view.addSubview(current.view)
+         transitionView.addSubview(current.view)
          current.view.translatesAutoresizingMaskIntoConstraints = false
          NSLayoutConstraint.activate(current.view.edgesAnchor.constraints(
             equalTo: transitionView.edgesAnchor
@@ -117,7 +117,7 @@ open class RootController: UIViewController {
       ) ?? .default
 
       UIView.transition(
-         with: view,
+         with: transitionView,
          duration: animated ? properties.duration : 0.0,
          options: properties.options,
          animations: {
