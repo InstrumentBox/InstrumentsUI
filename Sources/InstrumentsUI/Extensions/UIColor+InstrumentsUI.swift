@@ -52,7 +52,8 @@ extension UIColor {
    }
 
    public convenience init(rgb: String, alpha: CGFloat = 1.0) {
-      guard let rgb = Int(rgb) else {
+      let hashCharSet = CharacterSet(charactersIn: "#")
+      guard let rgb = Int(rgb.trimmingCharacters(in: hashCharSet)) else {
          self.init(red: 0.0, green: 0.0, blue: 0.0, alpha: alpha)
          return
       }
@@ -61,7 +62,8 @@ extension UIColor {
    }
 
    public convenience init(rgba: String) {
-      guard let rgba = Int64(rgba) else {
+      let hashCharSet = CharacterSet(charactersIn: "#")
+      guard let rgba = Int64(rgba.trimmingCharacters(in: hashCharSet)) else {
          self.init(red: 0.0, green: 0.0, blue: 0.0, alpha: 1.0)
          return
       }
