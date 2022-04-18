@@ -24,8 +24,6 @@
 
 #import "IUIBCollectionViewCompositionalLayout.h"
 
-#if TARGET_OS_IPHONE || TARGET_IPHONE_SIMULATOR
-
 @interface IUIBCollectionViewCompositionalLayout ()
 
 @property (nonatomic, strong) UICollectionViewCompositionalLayout *layout;
@@ -62,5 +60,3 @@
 }
 
 @end
-
-#endif
