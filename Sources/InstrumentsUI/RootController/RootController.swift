@@ -76,7 +76,9 @@ open class RootController: UIViewController {
    // MARK: - Content Controller Managing
 
    open func setContentViewController(_ contentViewController: UIViewController?, animated: Bool) {
-      delegate?.rootController?(self, willShow: contentViewController)
+      if isViewLoaded {
+         delegate?.rootController?(self, willShow: contentViewController)
+      }
 
       let previousContentViewController = _contentViewController
       _contentViewController = contentViewController
