@@ -27,9 +27,9 @@ import UIKit
 public protocol StoryboardInstantiatable where Self: UIViewController {
    static var storyboardID: String { get }
 
-   static func instantiate(from storyboardName: UIStoryboard.Name, in bundle: Bundle?) -> Self
-
    static func initial(from storyboardName: UIStoryboard.Name, in bundle: Bundle?) -> Self
+
+   static func instantiate(from storyboardName: UIStoryboard.Name, in bundle: Bundle?) -> Self
 }
 
 extension StoryboardInstantiatable {
@@ -37,15 +37,10 @@ extension StoryboardInstantiatable {
       "\(Self.self)"
    }
 
-   public static func instantiate(from storyboardName: UIStoryboard.Name) -> Self {
-      instantiate(from: storyboardName, in: nil)
-   }
-
-   public static func initial(from storyboardName: UIStoryboard.Name) -> Self {
-      initial(from: storyboardName, in: nil)
-   }
-
-   public static func initial(from storyboardName: UIStoryboard.Name, in bundle: Bundle?) -> Self {
+   public static func initial(
+      from storyboardName: UIStoryboard.Name,
+      in bundle: Bundle? = nil
+   ) -> Self {
       instantiate(storyboardName: storyboardName, bundle: bundle) { storyboard in
          storyboard.instantiateInitialViewController()
       }
@@ -53,7 +48,7 @@ extension StoryboardInstantiatable {
 
    public static func instantiate(
       from storyboardName: UIStoryboard.Name,
-      in bundle: Bundle?
+      in bundle: Bundle? = nil
    ) -> Self {
       instantiate(storyboardName: storyboardName, bundle: bundle) { storyboard in
          storyboard.instantiateViewController(withIdentifier: storyboardID)
