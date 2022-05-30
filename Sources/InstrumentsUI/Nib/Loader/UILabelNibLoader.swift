@@ -26,11 +26,17 @@ import UIKit
 
 open class UILabelNibLoader<Label: UILabel & NibLoadableView>: UIViewNibLoader<Label> {
    open override func copyProperties(to view: Label) {
+      let originalFont = view.font
+      let originalTextColor = view.textColor
+
       super.copyProperties(to: view)
 
       view.attributedText = ibView.attributedText
       view.text = ibView.text
       view.textAlignment = ibView.textAlignment
       view.isHighlighted = ibView.isHighlighted
+
+      view.font = originalFont
+      view.textColor = originalTextColor
    }
 }
