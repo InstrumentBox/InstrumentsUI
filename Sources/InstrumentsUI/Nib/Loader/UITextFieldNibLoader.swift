@@ -30,5 +30,19 @@ open class UITextFieldNibLoader<TextField: UITextField & NibLoadableView>: UICon
 
       view.placeholder = ibView.placeholder
       view.text = ibView.text
+
+      view.textContentType = ibView.textContentType
+      view.autocapitalizationType = ibView.autocapitalizationType
+      view.autocorrectionType = ibView.autocorrectionType
+      view.smartDashesType = ibView.smartDashesType
+      view.smartInsertDeleteType = ibView.smartInsertDeleteType
+      view.smartDashesType = ibView.smartDashesType
+      view.smartQuotesType = ibView.smartQuotesType
+      view.spellCheckingType = ibView.spellCheckingType
+      view.keyboardType = ibView.keyboardType
+      view.keyboardAppearance = ibView.keyboardAppearance
+      view.returnKeyType = ibView.returnKeyType
+      view.enablesReturnKeyAutomatically = ibView.enablesReturnKeyAutomatically
+      view.isSecureTextEntry = ibView.isSecureTextEntry
    }
 }
