@@ -44,5 +44,6 @@ open class UITextFieldNibLoader<TextField: UITextField & NibLoadableView>: UICon
       view.returnKeyType = ibView.returnKeyType
       view.enablesReturnKeyAutomatically = ibView.enablesReturnKeyAutomatically
       view.isSecureTextEntry = ibView.isSecureTextEntry
+      view.clearButtonMode = ibView.clearButtonMode
    }
 }
