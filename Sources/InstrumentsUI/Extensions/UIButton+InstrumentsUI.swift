@@ -25,7 +25,11 @@
 import UIKit
 
 extension UIButton {
-   public func setBackgroundColor(_ color: UIColor?, for state: UIControl.State) {
-      setBackgroundImage(color.flatMap { .fromColor($0) }, for: state)
+   public func setBackgroundColor(
+      _ color: UIColor?,
+      isOpaque: Bool = true,
+      for state: UIControl.State
+   ) {
+      setBackgroundImage(color.flatMap { .fromColor($0, isOpaque: isOpaque) }, for: state)
    }
 }
