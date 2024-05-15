@@ -103,7 +103,7 @@ open class RootController: UIViewController {
       completion: @escaping () -> Void
    ) {
       previous?.willMove(toParent: nil)
-      if let current = current {
+      if let current {
          addChild(current)
          transitionView.addSubview(current.view)
          current.view.translatesAutoresizingMaskIntoConstraints = false
