@@ -45,7 +45,7 @@ extension NibLoadableView {
       let nib = UINib(nibName: nibName, bundle: nibBundle)
       let nibContent = nib.instantiate(withOwner: nib, options: nil)
       guard let view = nibContent.first(where: { $0 is Self }) as? Self else {
-         fatalError("Can't find view of \(Self.self) in \(nib)")
+         fatalError("Couldn't find view of \(Self.self) in \(nib)")
       }
 
       return view

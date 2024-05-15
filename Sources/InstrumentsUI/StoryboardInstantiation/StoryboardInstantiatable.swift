@@ -65,7 +65,7 @@ extension StoryboardInstantiatable {
       guard let viewController = anyViewController as? Self else {
          let expected = "expected \(Self.self)"
          let received = "received \(type(of: anyViewController)))"
-         fatalError("Can't instantiate from \(storyboard): \(expected) but \(received)")
+         fatalError("Couldn't instantiate from \(storyboard): \(expected) but \(received)")
       }
 
       return viewController

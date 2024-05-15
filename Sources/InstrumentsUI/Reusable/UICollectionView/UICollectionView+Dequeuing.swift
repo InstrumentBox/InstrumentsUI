@@ -33,7 +33,7 @@ extension UICollectionView {
       guard let cell = anyCell as? Cell else {
          let expected = "expected \(Cell.self)"
          let received = "received \(type(of: anyCell))"
-         fatalError("Can't dequeue cell: \(expected) but \(received)")
+         fatalError("Couldn't dequeue cell: \(expected) but \(received)")
       }
 
       return cell
@@ -52,7 +52,7 @@ extension UICollectionView {
       guard let supplementaryView = anySupplementaryView as? SupplementaryView else {
          let expected = "expected \(SupplementaryView.self)"
          let received = "received \(type(of: anySupplementaryView))"
-         fatalError("Can't dequeue supplementary view: \(expected) but \(received)")
+         fatalError("Couldn't dequeue supplementary view: \(expected) but \(received)")
       }
 
       return supplementaryView
