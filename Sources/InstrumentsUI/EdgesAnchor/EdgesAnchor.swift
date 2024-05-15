@@ -24,7 +24,7 @@
 
 import UIKit
 
-public class EdgesAnchor {
+public struct EdgesAnchor {
    let view: UIView
 
    // MARK: - Init
