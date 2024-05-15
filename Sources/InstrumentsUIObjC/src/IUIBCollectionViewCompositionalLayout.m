@@ -51,12 +51,28 @@
 
 #pragma mark - NSProxy
 
+- (BOOL)respondsToSelector:(SEL)aSelector {
+   return [self.layout respondsToSelector:aSelector];
+}
+
 - (NSMethodSignature *)methodSignatureForSelector:(SEL)sel {
    return [self.layout methodSignatureForSelector:sel];
 }
 
 - (void)forwardInvocation:(NSInvocation *)invocation {
    [invocation invokeWithTarget:self.layout];
+}
+
+- (Class)class {
+   return [self.layout class];
+}
+
+- (NSString *)description {
+   return self.layout.description;
+}
+
+- (NSString *)debugDescription {
+   return self.layout.debugDescription;
 }
 
 @end
