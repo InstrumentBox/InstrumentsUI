@@ -71,15 +71,15 @@ extension UIColor {
       self.init(rgba: rgba)
    }
 
-   public convenience init(hue: Int, saturation: Int, brightness: Int, alpha: CGFloat = 1.0) {
-      let hue = min(360, max(0, hue))
-      let saturation = min(100, max(0, saturation))
-      let brightness = min(100, max(0, brightness))
+   public convenience init(h: Int, s: Int, b: Int, alpha: CGFloat = 1.0) {
+      let h = min(360, max(0, h))
+      let s = min(100, max(0, s))
+      let b = min(100, max(0, b))
 
       self.init(
-         hue: CGFloat(hue) / 360.0,
-         saturation: CGFloat(saturation) / 100.0,
-         brightness: CGFloat(brightness) / 100.0,
+         hue: CGFloat(h) / 360.0,
+         saturation: CGFloat(s) / 100.0,
+         brightness: CGFloat(b) / 100.0,
          alpha: alpha
       )
    }
