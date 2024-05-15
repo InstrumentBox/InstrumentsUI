@@ -25,7 +25,7 @@
 import UIKit
 
 @objc
-public final class RootTransitionProperties: NSObject {
+public class RootTransitionProperties: NSObject {
    public let duration: TimeInterval
    public let options: UIView.AnimationOptions
 

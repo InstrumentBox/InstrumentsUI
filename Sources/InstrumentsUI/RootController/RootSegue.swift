@@ -24,7 +24,7 @@
 
 import UIKit
 
-public final class RootSegue: UIStoryboardSegue {
+public class RootSegue: UIStoryboardSegue {
    public override func perform() {
       guard let rootController = source.rootController ?? source as? RootController else {
          fatalError(

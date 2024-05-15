@@ -24,7 +24,7 @@
 
 import UIKit
 
-final class RootTransitionView: UIView {
+class RootTransitionView: UIView {
    init() {
       super.init(frame: .zero)
 
