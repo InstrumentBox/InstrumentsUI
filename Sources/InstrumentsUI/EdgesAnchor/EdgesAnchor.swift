@@ -25,23 +25,36 @@
 import UIKit
 
 public struct EdgesAnchor {
-   let view: UIView
+   private let anchorsTrait: AnchorsTrait
 
    // MARK: - Init
 
-   init(view: UIView) {
-      self.view = view
+   init(anchorsTrait: AnchorsTrait) {
+      self.anchorsTrait = anchorsTrait
    }
 
    // MARK: - Constraints
 
    public func constraints(
       equalTo anchor: EdgesAnchor,
-      constants: UIEdgeInsets = .zero
+      constant: CGFloat = 0.0
+   ) -> [NSLayoutConstraint] {
+      let insets = NSDirectionalEdgeInsets(
+         top: constant,
+         leading: constant,
+         bottom: constant,
+         trailing: constant
+      )
+      return constraints(equalTo: anchor, insets: insets)
+   }
+
+   public func constraints(
+      equalTo anchor: EdgesAnchor,
+      insets: NSDirectionalEdgeInsets
    ) -> [NSLayoutConstraint] {[
-      view.topAnchor.constraint(equalTo: anchor.view.topAnchor, constant: constants.top),
-      anchor.view.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: constants.right),
-      anchor.view.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: constants.bottom),
-      view.leadingAnchor.constraint(equalTo: anchor.view.leadingAnchor, constant: constants.left)
+      anchorsTrait.topAnchor.constraint(equalTo: anchor.anchorsTrait.topAnchor, constant: insets.top),
+      anchor.anchorsTrait.trailingAnchor.constraint(equalTo: anchorsTrait.trailingAnchor, constant: insets.trailing),
+      anchor.anchorsTrait.bottomAnchor.constraint(equalTo: anchorsTrait.bottomAnchor, constant: insets.bottom),
+      anchorsTrait.leadingAnchor.constraint(equalTo: anchor.anchorsTrait.leadingAnchor, constant: insets.leading)
    ]}
 }
