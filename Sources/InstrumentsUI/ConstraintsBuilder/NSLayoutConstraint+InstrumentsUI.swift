@@ -29,4 +29,9 @@ extension NSLayoutConstraint {
       self.priority = priority
       return self
    }
+
+   public func store(in constraint: inout NSLayoutConstraint?) -> NSLayoutConstraint {
+      constraint = self
+      return self
+   }
 }
