@@ -1,5 +1,5 @@
 //
-//  Constaints.swift
+//  ActivateConstraints.swift
 //
 //  Copyright © 2024 Aleksei Zaikin.
 //
