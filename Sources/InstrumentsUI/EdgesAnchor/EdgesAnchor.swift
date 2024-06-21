@@ -37,24 +37,34 @@ public struct EdgesAnchor {
 
    public func constraints(
       equalTo anchor: EdgesAnchor,
-      constant: CGFloat = 0.0
+      edges: Edges = .all,
+      insets: NSDirectionalEdgeInsets = .zero
    ) -> [NSLayoutConstraint] {
-      let insets = NSDirectionalEdgeInsets(
-         top: constant,
-         leading: constant,
-         bottom: constant,
-         trailing: constant
-      )
-      return constraints(equalTo: anchor, insets: insets)
+      var constraints: [NSLayoutConstraint] = []
+      if edges.contains(.top) {
+         constraints.append(anchorsTrait.topAnchor.constraint(
+            equalTo: anchor.anchorsTrait.topAnchor,
+            constant: insets.top
+         ))
+      }
+      if edges.contains(.leading) {
+         constraints.append(anchorsTrait.leadingAnchor.constraint(
+            equalTo: anchor.anchorsTrait.leadingAnchor,
+            constant: insets.leading
+         ))
+      }
+      if edges.contains(.bottom) {
+         constraints.append(anchor.anchorsTrait.bottomAnchor.constraint(
+            equalTo: anchorsTrait.bottomAnchor,
+            constant: insets.bottom
+         ))
+      }
+      if edges.contains(.trailing) {
+         constraints.append(anchor.anchorsTrait.trailingAnchor.constraint(
+            equalTo: anchorsTrait.trailingAnchor,
+            constant: insets.trailing
+         ))
+      }
+      return constraints
    }
-
-   public func constraints(
-      equalTo anchor: EdgesAnchor,
-      insets: NSDirectionalEdgeInsets
-   ) -> [NSLayoutConstraint] {[
-      anchorsTrait.topAnchor.constraint(equalTo: anchor.anchorsTrait.topAnchor, constant: insets.top),
-      anchor.anchorsTrait.trailingAnchor.constraint(equalTo: anchorsTrait.trailingAnchor, constant: insets.trailing),
-      anchor.anchorsTrait.bottomAnchor.constraint(equalTo: anchorsTrait.bottomAnchor, constant: insets.bottom),
-      anchorsTrait.leadingAnchor.constraint(equalTo: anchor.anchorsTrait.leadingAnchor, constant: insets.leading)
-   ]}
 }
