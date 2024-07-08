@@ -33,7 +33,8 @@ extension UITableView {
       guard let cell = anyCell as? Cell else {
          let expected = "expected \(Cell.self)"
          let received = "received \(type(of: anyCell))"
-         fatalError("Couldn't dequeue cell: \(expected) but \(received)")
+         assert(false, "Couldn't dequeue cell: \(expected) but \(received)")
+         return Cell(style: .default, reuseIdentifier: reusableCell.reuseID)
       }
 
       return cell
@@ -48,7 +49,8 @@ extension UITableView {
       guard let headerFooter = anyHeaderFooter as? HeaderFooter else {
          let expected = "expected \(HeaderFooter.self)"
          let received = "received \(type(of: anyHeaderFooter))"
-         fatalError("Couldn't dequeue header footer: \(expected) but \(received)")
+         assert(false, "Couldn't dequeue header footer: \(expected) but \(received)")
+         return HeaderFooter(reuseIdentifier: reusableHeaderFooter.reuseID)
       }
 
       return headerFooter
