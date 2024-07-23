@@ -32,13 +32,17 @@ extension EdgesAnchor {
          self.rawValue = rawValue
       }
 
-      // MARK: - Predefined
+      // MARK: - Edges
 
-      public static let top = Edges(rawValue: 1 << 0)
-      public static let leading = Edges(rawValue: 1 << 1)
-      public static let bottom = Edges(rawValue: 1 << 2)
-      public static let trailing = Edges(rawValue: 1 << 3)
+      static let top = Edges(rawValue: 1 << 0)
+      static let leading = Edges(rawValue: 1 << 1)
+      static let bottom = Edges(rawValue: 1 << 2)
+      static let trailing = Edges(rawValue: 1 << 3)
 
       public static let all: Edges = [.top, .leading, .bottom, .trailing]
+      public static let allButTop: Edges = [.leading, .bottom, .trailing]
+      public static let allButLeading: Edges = [.top, .bottom, .trailing]
+      public static let allButBottom: Edges = [.top, .leading, .trailing]
+      public static let allButTrailing: Edges = [.top, .leading, .bottom]
    }
 }
