@@ -24,6 +24,6 @@
 
 import UIKit
 
-public func activateConstrains(@ConstraintsBuilder _ constraints: () -> [NSLayoutConstraint]) {
+public func activateConstraints(@ConstraintsBuilder _ constraints: () -> [NSLayoutConstraint]) {
    NSLayoutConstraint.activate(constraints())
 }
