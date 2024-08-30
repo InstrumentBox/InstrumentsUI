@@ -1,5 +1,5 @@
 //
-//  AnchorsTrait.swift
+//  CenterAnchor.swift
 //
 //  Copyright © 2024 Aleksei Zaikin.
 //
@@ -24,20 +24,27 @@
 
 import UIKit
 
-public protocol AnchorsTrait {
-   var topAnchor: NSLayoutYAxisAnchor { get }
+public struct CenterAnchor {
+   private let anchorsTrait: AnchorsTrait
 
-   var bottomAnchor: NSLayoutYAxisAnchor { get }
+   // MARK: - Init
 
-   var leadingAnchor: NSLayoutXAxisAnchor { get }
+   init(anchorsTrait: AnchorsTrait) {
+      self.anchorsTrait = anchorsTrait
+   }
 
-   var trailingAnchor: NSLayoutXAxisAnchor { get }
+   // MARK: - Constraints
 
-   var edgesAnchor: EdgesAnchor { get }
-}
-
-extension AnchorsTrait {
-   public var edgesAnchor: EdgesAnchor {
-      EdgesAnchor(anchorsTrait: self)
+   public func constraints(equalTo anchor: CenterAnchor, offset: CGPoint = .zero) -> [NSLayoutConstraint] {
+      var constraints: [NSLayoutConstraint] = []
+      constraints.append(anchorsTrait.centerXAnchor.constraint(
+         equalTo: anchor.anchorsTrait.centerXAnchor,
+         constant: offset.x
+      ))
+      constraints.append(anchorsTrait.centerYAnchor.constraint(
+         equalTo: anchor.anchorsTrait.centerYAnchor,
+         constant: offset.y
+      ))
+      return constraints
    }
 }
