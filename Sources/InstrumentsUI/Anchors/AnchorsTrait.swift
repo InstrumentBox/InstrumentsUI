@@ -24,6 +24,7 @@
 
 import UIKit
 
+@MainActor
 public protocol AnchorsTrait {
    var topAnchor: NSLayoutYAxisAnchor { get }
 

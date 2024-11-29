@@ -24,6 +24,7 @@
 
 import UIKit
 
+@MainActor
 public struct EdgesAnchor {
    private let anchorsTrait: AnchorsTrait
 

@@ -25,6 +25,7 @@
 import UIKit
 
 extension UIStoryboard {
+   @MainActor
    public struct Name {
       let raw: String
 

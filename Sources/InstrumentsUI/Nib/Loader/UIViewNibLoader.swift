@@ -24,6 +24,7 @@
 
 import UIKit
 
+@MainActor
 open class UIViewNibLoader<View: NibLoadableView> {
    public let ibView: View
 

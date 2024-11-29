@@ -24,6 +24,7 @@
 
 import UIKit
 
+@MainActor
 public struct CenterAnchor {
    private let anchorsTrait: AnchorsTrait
 

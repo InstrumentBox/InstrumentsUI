@@ -23,12 +23,13 @@
 //
 
 extension EdgesAnchor {
+   @MainActor
    public struct Edges: OptionSet {
       public var rawValue: Int
 
       // MARK: - Init
 
-      public init(rawValue: Int) {
+      public nonisolated init(rawValue: Int) {
          self.rawValue = rawValue
       }
 

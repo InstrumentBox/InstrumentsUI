@@ -28,6 +28,7 @@ import UIKit
 ///
 /// - Parameters:
 ///   - view: List of views where each one needs to be prepared to auto layout.
+@MainActor
 public func prepareForConstraints(_ views: UIView...) {
    for view in views {
       view.translatesAutoresizingMaskIntoConstraints = false
